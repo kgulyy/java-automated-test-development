@@ -24,4 +24,6 @@ public class Client {
     public String getName() {
         return name;
     }
+
+    // TODO: add equals() and hashCode()
 }
