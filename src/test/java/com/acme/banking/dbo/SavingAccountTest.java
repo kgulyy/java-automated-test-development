@@ -17,7 +17,6 @@ public class SavingAccountTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenIdIsNull() {
-
         new SavingAccount(null, STUB_CLIENT, DUMMY_AMOUNT);
     }
 
