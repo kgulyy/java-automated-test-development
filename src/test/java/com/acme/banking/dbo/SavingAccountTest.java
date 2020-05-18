@@ -16,17 +16,17 @@ public class SavingAccountTest {
     private static final Client STUB_CLIENT = new Client(STUB_CLIENT_ID, "client name");
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenIdIsNull() {
+    public void shouldNotCreateWhenIdIsNull() {
         new SavingAccount(null, STUB_CLIENT, DUMMY_AMOUNT);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenClienIsNull() {
+    public void shouldNotCreateWhenClienIsNull() {
         new SavingAccount(STUB_ID, null, DUMMY_AMOUNT);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenAmountIsLessThanZero() {
+    public void shouldNotCreateWhenAmountIsLessThanZero() {
         final double dummyNegativeAmount = -1;
 
         new SavingAccount(STUB_ID, STUB_CLIENT, dummyNegativeAmount);

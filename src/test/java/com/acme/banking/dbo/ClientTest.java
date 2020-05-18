@@ -21,17 +21,17 @@ public class ClientTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenIdIsNull() {
+    public void shouldNotCreateWhenIdIsNull() {
         new Client(null, DUMMY_CLIENT_NAME);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenNameIsNull() {
+    public void shouldNotCreateWhenNameIsNull() {
         new Client(stubId, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowExceptionWhenNameIsEmpty() {
+    public void shouldNotCreateWhenNameIsEmpty() {
         final String dummyEmptyName = "";
 
         new Client(stubId, dummyEmptyName);
