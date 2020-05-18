@@ -1,0 +1,12 @@
+theme:workflow:
+  - ".github/**/*"
+
+theme:build:
+  - "pom.xml"
+  - ".gitignore"
+
+theme:core:
+  - "src/main/**/*"
+
+theme:tests:
+  - "src/test/**/*"
