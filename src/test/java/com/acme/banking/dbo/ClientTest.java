@@ -39,11 +39,8 @@ public class ClientTest {
 
     @Test
     public void shouldSavePropertiesWhenCreated() {
-        //region when
         final Client sut = new Client(stubId, DUMMY_CLIENT_NAME);
-        //endregion
 
-        //region then
         assertThat(sut.getId(),
                 allOf(
                         equalTo(stubId),
@@ -55,6 +52,5 @@ public class ClientTest {
                         equalTo(DUMMY_CLIENT_NAME),
                         notNullValue()
                 ));
-        //endregion
     }
 }
