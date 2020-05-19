@@ -1,6 +1,5 @@
 package com.acme.banking.dbo.domain;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -9,12 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ClientTest {
     private static final String DUMMY_CLIENT_NAME = "dummy client name";
-    private UUID stubId;
-
-    @Before
-    public void initStubId() {
-        stubId = UUID.randomUUID();
-    }
+    private static final UUID DUMMY_ID = UUID.randomUUID();
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldNotCreateWhenIdIsNull() {
@@ -23,21 +17,21 @@ public class ClientTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldNotCreateWhenNameIsNull() {
-        new Client(stubId, null);
+        new Client(DUMMY_ID, null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldNotCreateWhenNameIsEmpty() {
         final String dummyEmptyName = "";
 
-        new Client(stubId, dummyEmptyName);
+        new Client(DUMMY_ID, dummyEmptyName);
     }
 
     @Test
     public void shouldSavePropertiesWhenCreated() {
-        final Client sut = new Client(stubId, DUMMY_CLIENT_NAME);
+        final Client sut = new Client(DUMMY_ID, DUMMY_CLIENT_NAME);
 
-        assertThat(sut.getId()).isNotNull().isEqualTo(stubId);
+        assertThat(sut.getId()).isNotNull().isEqualTo(DUMMY_ID);
         assertThat(sut.getName()).isNotNull().isEqualTo(DUMMY_CLIENT_NAME);
     }
 }
