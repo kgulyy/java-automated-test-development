@@ -1,7 +1,5 @@
-package com.acme.banking.dbo;
+package com.acme.banking.dbo.domain;
 
-import com.acme.banking.dbo.domain.Client;
-import com.acme.banking.dbo.domain.SavingAccount;
 import org.junit.Test;
 
 import java.util.UUID;
