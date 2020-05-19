@@ -6,10 +6,7 @@ import org.junit.Test;
 
 import java.util.UUID;
 
-import static org.hamcrest.CoreMatchers.allOf;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ClientTest {
     private static final String DUMMY_CLIENT_NAME = "dummy client name";
@@ -41,16 +38,7 @@ public class ClientTest {
     public void shouldSavePropertiesWhenCreated() {
         final Client sut = new Client(stubId, DUMMY_CLIENT_NAME);
 
-        assertThat(sut.getId(),
-                allOf(
-                        equalTo(stubId),
-                        notNullValue()
-                ));
-
-        assertThat(sut.getName(),
-                allOf(
-                        equalTo(DUMMY_CLIENT_NAME),
-                        notNullValue()
-                ));
+        assertThat(sut.getId()).isNotNull().isEqualTo(stubId);
+        assertThat(sut.getName()).isNotNull().isEqualTo(DUMMY_CLIENT_NAME);
     }
 }
