@@ -1,34 +1,38 @@
 package com.acme.banking.dbo.domain;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ClientTest {
+class ClientTest {
     private static final String DUMMY_CLIENT_NAME = "dummy client name";
     private static final UUID DUMMY_ID = UUID.randomUUID();
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldNotCreateWhenIdIsNull() {
-        new Client(null, DUMMY_CLIENT_NAME);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldNotCreateWhenNameIsNull() {
-        new Client(DUMMY_ID, null);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldNotCreateWhenNameIsEmpty() {
-        final String dummyEmptyName = "";
-
-        new Client(DUMMY_ID, dummyEmptyName);
+    @Test
+    void shouldNotCreateWhenIdIsNull() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Client(null, DUMMY_CLIENT_NAME));
     }
 
     @Test
-    public void shouldSavePropertiesWhenCreated() {
+    void shouldNotCreateWhenNameIsNull() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Client(DUMMY_ID, null));
+    }
+
+    @Test
+    void shouldNotCreateWhenNameIsEmpty() {
+        final String dummyEmptyName = "";
+
+        assertThrows(IllegalArgumentException.class,
+                () -> new Client(DUMMY_ID, dummyEmptyName));
+    }
+
+    @Test
+    void shouldSavePropertiesWhenCreated() {
         final Client sut = new Client(DUMMY_ID, DUMMY_CLIENT_NAME);
 
         assertThat(sut.getId()).isNotNull().isEqualTo(DUMMY_ID);
