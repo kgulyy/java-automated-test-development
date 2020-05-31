@@ -1,6 +1,9 @@
 package com.acme.banking.dbo.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.example.random.Random;
+import org.junit.jupiter.api.extension.example.random.RandomParametersExtension;
 
 import java.util.UUID;
 
@@ -34,12 +37,13 @@ class SavingAccountTest {
     }
 
     @Test
-    void shouldSavePropertiesWhenCreated() {
-        final SavingAccount sut = new SavingAccount(DUMMY_ID, DUMMY_CLIENT, DUMMY_AMOUNT);
+    @ExtendWith(RandomParametersExtension.class)
+    void shouldSavePropertiesWhenCreated(@Random double dummyAmount) {
+        final SavingAccount sut = new SavingAccount(DUMMY_ID, DUMMY_CLIENT, dummyAmount);
 
         assertThat(sut.getId()).isNotNull().isEqualTo(DUMMY_ID);
         assertThat(sut.getClient()).isNotNull().isEqualTo(DUMMY_CLIENT);
         assertThat(sut.getClientId()).isNotNull().isSameAs(DUMMY_CLIENT_ID);
-        assertThat(sut.getAmount()).isEqualTo(DUMMY_AMOUNT);
+        assertThat(sut.getAmount()).isEqualTo(dummyAmount);
     }
 }
