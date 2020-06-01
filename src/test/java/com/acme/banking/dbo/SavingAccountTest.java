@@ -9,7 +9,7 @@ import java.util.UUID;
 import static org.junit.Assert.fail;
 
 public class SavingAccountTest {
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldNotCreateAccountWhenNullId() {
         //region Given
         final UUID dummyUuid = UUID.randomUUID();
